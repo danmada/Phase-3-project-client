@@ -1,4 +1,15 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+
+const Container = styled.div`
+  width: 100%;
+  height: 100px;
+  padding-top: 40px;
+  text-align: center;
+  color: blue;
+  background-color: grey;
+  font-size: 45px;
+`;
 
 const Home = () => {
   const [gameType, setGameType] = useState("");
@@ -6,7 +17,7 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const [form, setForm] = useState({
     gameTypes: "",
-    barsCity: "",
+    city: "",
   });
   useEffect(() => {
     fetch(`http://localhost:9292/game_types`)
@@ -24,7 +35,6 @@ const Home = () => {
       .then((res) => res.json())
       .then((json) => setBars(json));
   }, []);
-  console.log(bars);
 
   const handleChange = (e) => {
     setForm({
@@ -36,12 +46,25 @@ const Home = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(form);
+    let filterCity = bars.filter((bar) => bar.city === form.city);
+    let fileterGames = [];
+    filterCity.forEach((bar) => {
+      bar.bar_game_types.forEach((game) => {
+        if (game.game_type === form.gameTypes) {
+          fileterGames.push(bar);
+        }
+      });
+    });
+    console.log(fileterGames);
   };
-  console.log(search);
+  const reducedCities = (bars) => {
+    let cities = bars.map((bar) => bar.city);
+    return [...new Set(cities)];
+  };
+  console.log(reducedCities(bars));
 
   return (
-    <div>
-      <h1>Home</h1>
+    <Container>
       <form onSubmit={handleSubmit}>
         <label for="gameTypes">Type of game</label>
         <select onChange={handleChange} name="gameTypes">
@@ -53,12 +76,12 @@ const Home = () => {
             );
           })}
         </select>
-        <label for="barsCity">Where are you playing?</label>
-        <select onChange={handleChange} name="barsCity">
-          {bars.map((bar) => {
+        <label for="city">Where are you playing?</label>
+        <select onChange={handleChange} name="city">
+          {reducedCities(bars).map((bar) => {
             return (
-              <option key={bar.id} value={bar.city}>
-                {bar.city}
+              <option key={bar} value={bar}>
+                {bar}
               </option>
             );
           })}
@@ -79,7 +102,7 @@ const Home = () => {
           </div>
         );
       })} */}
-    </div>
+    </Container>
   );
 };
 
