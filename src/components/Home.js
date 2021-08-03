@@ -3,16 +3,6 @@ import styled from "styled-components";
 import Search from "./Search";
 import SearchResults from "./SearchResults";
 
-const Container = styled.div`
-  width: 100%;
-  height: 100px;
-  padding-top: 40px;
-  text-align: center;
-  color: blue;
-  background-color: grey;
-  font-size: 45px;
-`;
-
 const Home = () => {
   const [gameType, setGameType] = useState([]);
   const [bars, setBars] = useState([]);
@@ -56,9 +46,9 @@ const Home = () => {
   // }, []);
 
   return (
-    <Container>
+    <div>
       {isSearched ? (
-        <SearchResults />
+        <SearchResults search={search} />
       ) : (
         <Search
           search={search}
@@ -70,7 +60,7 @@ const Home = () => {
           setIsSearched={setIsSearched}
         />
       )}
-    </Container>
+    </div>
   );
 };
 

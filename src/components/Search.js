@@ -1,3 +1,16 @@
+import React from "react";
+import styled from "styled-components";
+
+const Container = styled.div`
+  width: 100%;
+  height: 100px;
+  padding-top: 40px;
+  text-align: center;
+  color: blue;
+  background-color: grey;
+  font-size: 45px;
+`;
+
 const Search = ({
   form,
   setForm,
@@ -34,7 +47,7 @@ const Search = ({
     return [...new Set(cities)];
   };
   return (
-    <div>
+    <Container>
       <form onSubmit={handleSubmit}>
         <label for="gameTypes">Type of game</label>
         <select onChange={handleChange} name="gameTypes">
@@ -70,7 +83,7 @@ const Search = ({
           </div>
         );
       })} */}
-    </div>
+    </Container>
   );
 };
 
