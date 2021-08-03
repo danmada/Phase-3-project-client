@@ -38,6 +38,10 @@ const Search = ({
         }
       });
     });
+    if (fileterGames.length === 0) {
+      alert("Please select a game and city to search!");
+      return;
+    }
     setSearch(fileterGames);
     setIsSearched(true);
   };
@@ -51,6 +55,7 @@ const Search = ({
       <form onSubmit={handleSubmit}>
         <label for="gameTypes">Type of game</label>
         <select onChange={handleChange} name="gameTypes">
+          <option value={null}>Game</option>
           {gameType.map((game) => (
             <option key={game.id} value={game.game_type}>
               {game.game_type}
@@ -59,6 +64,8 @@ const Search = ({
         </select>
         <label for="city">Where are you playing?</label>
         <select onChange={handleChange} name="city">
+          <option value={null}>City</option>
+
           {reducedCities(bars).map((bar) => {
             return (
               <option key={bar} value={bar}>

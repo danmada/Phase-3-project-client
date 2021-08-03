@@ -9,9 +9,10 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const [isSearched, setIsSearched] = useState(false);
   const [form, setForm] = useState({
-    gameTypes: "",
-    city: "",
+    gameTypes: [],
+    city: [],
   });
+
   useEffect(() => {
     fetch(`http://localhost:9292/game_types`)
       .then((res) => res.json())
@@ -26,6 +27,7 @@ const Home = () => {
       .then((res) => res.json())
       .then((json) => setBars(json));
   }, []);
+  console.log(form);
 
   // useEffect(() => {
   //   const fetchData = async () => {
