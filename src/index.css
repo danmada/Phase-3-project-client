@@ -13,6 +13,17 @@ code {
 }
 
 .active {
-  color: rgba(225, 71, 54, 1);
+  color: rgb(0, 149, 121);
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
+select {
+  width: 120px;
+  height: 30px;
+  border: 1px solid #999;
+  font-size: 15px;
+  color: #000000;
+  background-color: #eee;
+  border-radius: 5px;
+  box-shadow: 4px 4px #ccc;
 }

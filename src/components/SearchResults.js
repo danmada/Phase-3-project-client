@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import BarCard from "./BarCard";
+import Search from "./Search";
 
 const Container = styled.div`
   width: 100%;
@@ -21,19 +22,21 @@ const List = styled.div`
 const ListItem = styled.div`
   align-content: center;
   text-align: center;
-  padding-top: 40px;
-  font-size: 30px;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  font-size: 25px;
   width: 100%;
   height: 20%;
   border: 1px solid;
+  border-radius: 5px;
   &:hover {
-    color: rgb(225, 200, 54);
+    color: rgb(0, 149, 121);
     box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   }
 `;
 
 const SearchResults = ({ search }) => {
-  const [active, setActive] = useState([]);
+  const [active, setActive] = useState(search[0]);
   console.log(active);
 
   const handleClick = (e) => {
@@ -45,23 +48,25 @@ const SearchResults = ({ search }) => {
   };
 
   return (
-    <Container>
-      <List>
-        <Title>Bars:</Title>
-        {search.map((bar) => {
-          return (
-            <ListItem
-              className={active.id === bar.id ? "active" : "none"}
-              key={bar.id}
-              onClick={handleClick}
-            >
-              {bar.name}
-            </ListItem>
-          );
-        })}
-      </List>
-      <BarCard bar={active} />
-    </Container>
+    <div>
+      <Container>
+        <List>
+          <Title>Bars:</Title>
+          {search.map((bar) => {
+            return (
+              <ListItem
+                className={active.id === bar.id ? "active" : "none"}
+                key={bar.id}
+                onClick={handleClick}
+              >
+                {bar.name}
+              </ListItem>
+            );
+          })}
+        </List>
+        <BarCard bar={active} />
+      </Container>
+    </div>
   );
 };
 

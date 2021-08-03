@@ -2,6 +2,13 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Search from "./Search";
 import SearchResults from "./SearchResults";
+import poolHall from "./assets/poolhall.png";
+
+const Image = styled.img`
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+`;
 
 const Home = () => {
   const [gameType, setGameType] = useState([]);
@@ -49,19 +56,18 @@ const Home = () => {
 
   return (
     <div>
-      {isSearched ? (
-        <SearchResults search={search} />
-      ) : (
-        <Search
-          search={search}
-          setSearch={setSearch}
-          form={form}
-          setForm={setForm}
-          bars={bars}
-          gameType={gameType}
-          setIsSearched={setIsSearched}
-        />
-      )}
+      {isSearched ? null : <Image src={poolHall} />}
+
+      <Search
+        search={search}
+        setSearch={setSearch}
+        form={form}
+        setForm={setForm}
+        bars={bars}
+        gameType={gameType}
+        setIsSearched={setIsSearched}
+      />
+      {isSearched ? <SearchResults search={search} /> : null}
     </div>
   );
 };

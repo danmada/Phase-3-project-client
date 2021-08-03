@@ -4,11 +4,10 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   height: 100px;
-  padding-top: 40px;
+  /* padding-top: 40px; */
   text-align: center;
-  color: blue;
-  background-color: grey;
-  font-size: 45px;
+  background-color: rgb(0, 149, 121);
+  font-size: 24px;
 `;
 
 const Search = ({
@@ -52,8 +51,9 @@ const Search = ({
   };
   return (
     <Container>
+      <h3>What's on tap for tonight?</h3>
       <form onSubmit={handleSubmit}>
-        <label for="gameTypes">Type of game</label>
+        <label for="gameTypes">Playing</label>
         <select onChange={handleChange} name="gameTypes">
           <option value={null}>Game</option>
           {gameType.map((game) => (
@@ -62,7 +62,7 @@ const Search = ({
             </option>
           ))}
         </select>
-        <label for="city">Where are you playing?</label>
+        <label for="city">in</label>
         <select onChange={handleChange} name="city">
           <option value={null}>City</option>
 
@@ -76,20 +76,6 @@ const Search = ({
         </select>
         <input type="submit" value="Search" />
       </form>
-      {/* {search.map((bar) => {
-        return (
-          <div>
-            <h1>Name: {bar.name}</h1>
-            <p>{bar.description}</p>
-            <p>{bar.rating}</p>
-            <p>{bar.city}</p>
-            <p>{bar.name}</p>
-            {bar.bar_game_types.map((type) => {
-              return <p> Game Type: {type.game_type}</p>;
-            })}
-          </div>
-        );
-      })} */}
     </Container>
   );
 };
