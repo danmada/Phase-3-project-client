@@ -4,8 +4,8 @@ import styled from "styled-components";
 const Container = styled.div`
   color: white;
   width: 100%;
-  height: 100px;
-  padding-top: 25%;
+  height: 75px;
+  padding-top: 25px;
   text-align: center;
   // background-color: rgb(0, 149, 121);
   font-size: 24px;

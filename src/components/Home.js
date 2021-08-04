@@ -13,6 +13,9 @@ const Image = styled.img`
   z-index: -1;
 `;
 
+const Block = styled.div`
+  height: 45vh;
+`;
 const Home = () => {
   const [gameType, setGameType] = useState([]);
   const [bars, setBars] = useState([]);
@@ -59,7 +62,12 @@ const Home = () => {
 
   return (
     <div>
-      {isSearched ? null : <Image src={poolHall}/>}
+      {isSearched ? null : (
+        <div>
+          <Image src={poolHall} />
+          <Block />
+        </div>
+      )}
 
       <Search
         search={search}
