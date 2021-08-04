@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import BarCard from "./BarCard";
 import Search from "./Search";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, Tooltip } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 
 const Container = styled.div`
@@ -70,10 +70,7 @@ const SearchResults = ({ search }) => {
 
         <MapContainer
           className="map-container"
-          center={[
-            search[0].latitude.toFixed(3),
-            search[0].longitude.toFixed(3),
-          ]}
+          center={[active.latitude.toFixed(3), active.longitude.toFixed(3)]}
           zoom={5}
           scrollWheelZoom={false}
         >
@@ -82,14 +79,16 @@ const SearchResults = ({ search }) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <MarkerClusterGroup>
-            <Marker position={[49.8397, 24.0297]} />
-            <Marker position={[52.2297, 21.0122]} />
-            <Marker position={[51.5074, -0.0901]} />
             {search.map((bar) => {
               return (
                 <Marker
                   position={[bar.latitude.toFixed(3), bar.longitude.toFixed(3)]}
-                />
+                >
+                  <Popup>
+                    {bar.name}
+                    {bar.city}
+                  </Popup>
+                </Marker>
               );
             })}
           </MarkerClusterGroup>
