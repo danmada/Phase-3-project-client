@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import BarCard from "./BarCard";
 import Search from "./Search";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-markercluster";
 
 const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 30% 40% 30%;
 `;
 const Title = styled.div`
   font-size: 30px;
@@ -65,6 +67,33 @@ const SearchResults = ({ search }) => {
           })}
         </List>
         <BarCard bar={active} />
+
+        <MapContainer
+          className="map-container"
+          center={[
+            search[0].latitude.toFixed(3),
+            search[0].longitude.toFixed(3),
+          ]}
+          zoom={5}
+          scrollWheelZoom={false}
+        >
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <MarkerClusterGroup>
+            <Marker position={[49.8397, 24.0297]} />
+            <Marker position={[52.2297, 21.0122]} />
+            <Marker position={[51.5074, -0.0901]} />
+            {search.map((bar) => {
+              return (
+                <Marker
+                  position={[bar.latitude.toFixed(3), bar.longitude.toFixed(3)]}
+                />
+              );
+            })}
+          </MarkerClusterGroup>
+        </MapContainer>
       </Container>
     </div>
   );
