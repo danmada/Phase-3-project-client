@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Search from "./Search";
 import SearchResults from "./SearchResults";
-import poolHall from "./assets/poolhall.png";
+import poolHall from "./assets/pub_pool.jpg";
 
 const Image = styled.img`
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
+  position: fixed;
+  opacity: 0.6;
+  z-index: -1;
 `;
 
 const Home = () => {
@@ -56,7 +59,7 @@ const Home = () => {
 
   return (
     <div>
-      {isSearched ? null : <Image src={poolHall} />}
+      {isSearched ? null : <Image src={poolHall}/>}
 
       <Search
         search={search}

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 const Nav = styled.div`
+  color: white;
+  background-color: black;
   position: relative;
   top: 0;
   left: 0;
@@ -13,11 +15,19 @@ const Nav = styled.div`
   justify-content: flex-end;
   z-index: 100;
 `;
+
+const Title = styled.h1`
+  font-size: 50px;
+  padding-left: 25%;
+  padding-top: 2%;
+`
+
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 `;
 const GridItem = styled.div`
+  font-size: 15pt;
   height: 100px;
   width: auto;
   position: relative;
@@ -39,7 +49,9 @@ const NavBar = () => {
 
   return (
     <Nav>
-      <h1>Pub Sports</h1>
+      <Title>
+      Pub Game Finder
+      </Title>
 
       {click ? (
         <Container>
