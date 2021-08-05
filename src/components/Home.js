@@ -2,17 +2,23 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Search from "./Search";
 import SearchResults from "./SearchResults";
-import poolHall from "./assets/poolhall.png";
+import poolHall from "./assets/pub_pool.jpg";
 
 const Image = styled.img`
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
+  position: fixed;
+  opacity: 0.6;
+  z-index: -1;
 `;
 
-const Home = () => {
-  const [gameType, setGameType] = useState([]);
-  const [bars, setBars] = useState([]);
+const Block = styled.div`
+  height: 45vh;
+`;
+const Home = ({ bars, gameType }) => {
+  // const [gameType, setGameType] = useState([]);
+  // const [bars, setBars] = useState([]);
   const [search, setSearch] = useState("");
   const [isSearched, setIsSearched] = useState(false);
   const [form, setForm] = useState({
@@ -20,21 +26,20 @@ const Home = () => {
     city: [],
   });
 
-  useEffect(() => {
-    fetch(`http://localhost:9292/game_types`)
-      .then((res) => res.json())
-      .then((json) => {
-        setGameType(json);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+  // useEffect(() => {
+  //   fetch(`http://localhost:9292/game_types`)
+  //     .then((res) => res.json())
+  //     .then((json) => {
+  //       setGameType(json);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     });
 
-    fetch(`http://localhost:9292/bars`)
-      .then((res) => res.json())
-      .then((json) => setBars(json));
-  }, []);
-  console.log(form);
+  //   fetch(`http://localhost:9292/bars`)
+  //     .then((res) => res.json())
+  //     .then((json) => setBars(json));
+  // }, []);
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -56,7 +61,12 @@ const Home = () => {
 
   return (
     <div>
-      {isSearched ? null : <Image src={poolHall} />}
+      {isSearched ? null : (
+        <div>
+          <Image src={poolHall} />
+          <Block />
+        </div>
+      )}
 
       <Search
         search={search}

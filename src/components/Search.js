@@ -2,12 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 100%;
-  height: 100px;
-  /* padding-top: 40px; */
+  color: white;
+  width: 60%;
+  height: 75px;
+  padding-top: 25px;
   text-align: center;
-  background-color: rgb(0, 149, 121);
+  background-color: rgb(71, 109, 158, 0.8);
   font-size: 24px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-left: 20%;
+  z-index: 1;
 `;
 
 const Search = ({
@@ -51,9 +56,9 @@ const Search = ({
   };
   return (
     <Container>
-      <h3>What's on tap for tonight?</h3>
+      {/* <h3>What's on tap for tonight?</h3> */}
       <form onSubmit={handleSubmit}>
-        <label for="gameTypes">Playing</label>
+        <label for="gameTypes">I want to play </label>
         <select onChange={handleChange} name="gameTypes">
           <option value={null}>Game</option>
           {gameType.map((game) => (

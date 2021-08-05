@@ -15,6 +15,7 @@ const Title = styled.div`
   font-size: 30px;
   text-align: center;
   padding-top: 20px;
+  padding-bottom: 20px;
   height: 10%;
 `;
 const List = styled.div`
