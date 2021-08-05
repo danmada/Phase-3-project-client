@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { Rating } from "semantic-ui-react";
+// import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 const Card = styled.div`
   padding: 50px;
 `;
 
 const BarCard = ({ bar }) => {
+  const position = [bar.latitude.toFixed(2), bar.longitude.toFixed(2)];
+  console.log(position);
+  console.log(bar.latitude.toFixed(2), bar.longitude.toFixed(2));
   return (
     <Card>
       <h1>{bar.name}</h1>
