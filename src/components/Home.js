@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Search from "./Search";
 import SearchResults from "./SearchResults";
@@ -25,21 +25,6 @@ const Home = ({ bars, gameType }) => {
     gameTypes: [],
     city: [],
   });
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:9292/game_types`)
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       setGameType(json);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error:", error);
-  //     });
-
-  //   fetch(`http://localhost:9292/bars`)
-  //     .then((res) => res.json())
-  //     .then((json) => setBars(json));
-  // }, []);
 
   // useEffect(() => {
   //   const fetchData = async () => {

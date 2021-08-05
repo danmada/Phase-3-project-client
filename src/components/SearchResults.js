@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import BarCard from "./BarCard";
-import Search from "./Search";
-import { MapContainer, TileLayer, Marker, Popup, Tooltip } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 
 const Container = styled.div`
@@ -21,6 +20,8 @@ const Title = styled.div`
 const List = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  overflow: auto;
 `;
 const ListItem = styled.div`
   align-content: center;
@@ -50,6 +51,13 @@ const SearchResults = ({ search }) => {
     });
   };
 
+  function ChangeView({ center, zoom }) {
+    const map = useMap();
+    map.setView(center, zoom);
+    return null;
+  }
+  console.log([active.latitude.toFixed(3), active.longitude.toFixed(3)]);
+
   return (
     <div>
       <Container>
@@ -75,6 +83,10 @@ const SearchResults = ({ search }) => {
           zoom={13}
           scrollWheelZoom={false}
         >
+          <ChangeView
+            center={[active.latitude.toFixed(3), active.longitude.toFixed(3)]}
+            zoom={13}
+          />
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
