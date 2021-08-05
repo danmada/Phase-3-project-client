@@ -11,7 +11,7 @@ const Container = styled.div`
   font-size: 24px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  margin-left: 30%;
+  margin-left: 25%;
   z-index: 1;
 `;
 
@@ -19,11 +19,9 @@ const SearchBtn = styled.input`
   margin-right: 10pt;
   float: right;
   margin-right: 35pt;
-`
+`;
 
-const homeLabel = styled.label`
-  
-`
+const homeLabel = styled.label``;
 
 const Search = ({
   form,
@@ -77,7 +75,7 @@ const Search = ({
             </option>
           ))}
         </select>
-        <homeLabel for="city">  in  </homeLabel>
+        <homeLabel for="city"> in </homeLabel>
         <select onChange={handleChange} name="city">
           <option value={null}>City</option>
 

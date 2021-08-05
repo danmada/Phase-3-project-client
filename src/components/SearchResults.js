@@ -3,12 +3,12 @@ import styled from "styled-components";
 import BarCard from "./BarCard";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
-import arcadeImg from "./assets/arcade_games.jpg"
+import arcadeImg from "./assets/arcade_games.jpg";
 
 const Container = styled.div`
   padding-top: 19pt;
   width: 100%;
-  height: 100vh;
+  height: 75vh;
   display: grid;
   grid-template-columns: 30% 40% 30%;
 `;
@@ -22,7 +22,7 @@ const Title = styled.div`
 const List = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 75vh;
   overflow: auto;
 `;
 const ListItem = styled.div`
@@ -46,9 +46,10 @@ const Image = styled.img`
   height: 100%;
   object-fit: cover;
   position: fixed;
+  top: 0;
   opacity: 0.3;
   z-index: -1;
-`
+`;
 
 const SearchResults = ({ search }) => {
   const [active, setActive] = useState(search[0]);

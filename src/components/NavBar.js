@@ -6,7 +6,7 @@ import dartImg from "./assets/icons8-billiards-150.png";
 const Nav = styled.div`
   color: white;
   background-color: black;
-  position: relative;
+  /* position: relative; */
   top: 0;
   left: 0;
   height: 100px;
@@ -14,23 +14,22 @@ const Nav = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: flex-end;
-  z-index: 100;
-  position: fixed;
+  /* z-index: 100; */
+  /* position: sticky; */
 `;
 
 const Title = styled.h1`
   font-size: 50px;
   padding-left: 5%;
   padding-top: 2%;
-`
+`;
 
 const Icon = styled.img`
   margin: 0;
   width: 35pt;
   height: 45pt;
   padding-top: 15pt;
-  
-`
+`;
 
 const Container = styled.div`
   display: grid;
@@ -59,10 +58,9 @@ const NavBar = () => {
 
   return (
     <Nav>
-      
       <Title>
-      <Icon src={dartImg}></Icon>
-      Pub Game Finder
+        <Icon src={dartImg}></Icon>
+        Pub Game Finder
       </Title>
 
       {click ? (

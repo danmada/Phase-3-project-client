@@ -21,13 +21,12 @@ select {
   width: 120px;
   height: 28px;
   border: 1px solid #999;
-  font-size: 15px;
+  font-size: 13px;
   color: #000000;
   background-color: #eee;
   border-radius: 5px;
 }
 
-
 .map-container {
-  height: 100vh;
+  height: 75vh;
 }
