@@ -72,7 +72,7 @@ const SearchResults = ({ search }) => {
         <MapContainer
           className="map-container"
           center={[active.latitude.toFixed(3), active.longitude.toFixed(3)]}
-          zoom={5}
+          zoom={13}
           scrollWheelZoom={false}
         >
           <TileLayer
@@ -86,8 +86,7 @@ const SearchResults = ({ search }) => {
                   position={[bar.latitude.toFixed(3), bar.longitude.toFixed(3)]}
                 >
                   <Popup>
-                    {bar.name}
-                    {bar.city}
+                    {bar.name}: {bar.rating}/10
                   </Popup>
                 </Marker>
               );
