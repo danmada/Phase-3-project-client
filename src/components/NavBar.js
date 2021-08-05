@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import dartImg from "./assets/icons8-billiards-150.png";
 
 const Nav = styled.div`
   color: white;
@@ -18,8 +19,16 @@ const Nav = styled.div`
 
 const Title = styled.h1`
   font-size: 50px;
-  padding-left: 25%;
+  padding-left: 5%;
   padding-top: 2%;
+`
+
+const Icon = styled.img`
+  margin: 0;
+  width: 35pt;
+  height: 45pt;
+  padding-top: 15pt;
+  
 `
 
 const Container = styled.div`
@@ -49,7 +58,9 @@ const NavBar = () => {
 
   return (
     <Nav>
+      
       <Title>
+      <Icon src={dartImg}></Icon>
       Pub Game Finder
       </Title>
 
