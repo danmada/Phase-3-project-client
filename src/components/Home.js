@@ -16,9 +16,9 @@ const Image = styled.img`
 const Block = styled.div`
   height: 45vh;
 `;
-const Home = () => {
-  const [gameType, setGameType] = useState([]);
-  const [bars, setBars] = useState([]);
+const Home = ({ bars, gameType }) => {
+  // const [gameType, setGameType] = useState([]);
+  // const [bars, setBars] = useState([]);
   const [search, setSearch] = useState("");
   const [isSearched, setIsSearched] = useState(false);
   const [form, setForm] = useState({
@@ -26,21 +26,20 @@ const Home = () => {
     city: [],
   });
 
-  useEffect(() => {
-    fetch(`http://localhost:9292/game_types`)
-      .then((res) => res.json())
-      .then((json) => {
-        setGameType(json);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+  // useEffect(() => {
+  //   fetch(`http://localhost:9292/game_types`)
+  //     .then((res) => res.json())
+  //     .then((json) => {
+  //       setGameType(json);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     });
 
-    fetch(`http://localhost:9292/bars`)
-      .then((res) => res.json())
-      .then((json) => setBars(json));
-  }, []);
-  console.log(form);
+  //   fetch(`http://localhost:9292/bars`)
+  //     .then((res) => res.json())
+  //     .then((json) => setBars(json));
+  // }, []);
 
   // useEffect(() => {
   //   const fetchData = async () => {

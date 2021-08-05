@@ -41,11 +41,22 @@ const InputLabels = styled.label`
   display: inline-block;
 `;
 
-const NewBarForm = ({ bars, setBars }) => {
-  const [barName, setBarName] = useState("");
-  const [description, setDescription] = useState("");
-  const [city, setCity] = useState("");
-  const [gameType, setGameType] = useState("");
+const NewBarForm = ({ bars, setBars, gameType }) => {
+  const [newBarForm, setNewBarForm] = useState({
+    name: "",
+    description: "",
+    rating: 10,
+    city: "",
+    game: "",
+    amount: 1,
+  });
+
+  const handleChange = (e) => {
+    setNewBarForm({
+      ...newBarForm,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,17 +66,26 @@ const NewBarForm = ({ bars, setBars }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        name: barName,
-        description: description,
-        city: city,
-      }),
+      body: JSON.stringify(newBarForm),
     })
       .then((res) => res.json())
-      .then((json) => setBars([...bars, json]));
+      .then((json) => {
+        console.log(json);
+        console.log(bars);
+
+        setBars([...bars, json]);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
-  console.log(barName);
+  const reducedCities = (bars) => {
+    let cities = bars.map((bar) => bar.city);
+    return [...new Set(cities)];
+  };
+
+  console.log(newBarForm);
 
   return (
     <Container>
@@ -74,33 +94,60 @@ const NewBarForm = ({ bars, setBars }) => {
         <InputLabels>Name of Bar</InputLabels>
         <FormInput
           type="text"
-          value={barName}
+          name="name"
+          value={newBarForm.name}
           placeholder="Bar Name"
-          onChange={(e) => setBarName(e.target.value)}
+          onChange={handleChange}
         />
 
         <InputLabels>Description</InputLabels>
         <FormInput
           type="text"
-          value={description}
+          name="description"
+          value={newBarForm.description}
           placeholder="Description"
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={handleChange}
+        />
+        <InputLabels>Rating: 1 to 10</InputLabels>
+        <FormInput
+          type="number"
+          name="rating"
+          value={newBarForm.rating}
+          onChange={handleChange}
+          min="1"
+          max="10"
         />
 
         <InputLabels>City</InputLabels>
-        <FormInput
-          type="text"
-          value={city}
-          placeholder="City"
-          onChange={(e) => setCity(e.target.value)}
-        />
+        <select onChange={handleChange} name="city">
+          <option value={null}>City</option>
+
+          {reducedCities(bars).map((bar) => {
+            return (
+              <option key={bar} value={bar}>
+                {bar}
+              </option>
+            );
+          })}
+        </select>
 
         <InputLabels>Type of Game</InputLabels>
+        <select onChange={handleChange} name="game">
+          <option value={null}>Game</option>
+          {gameType.map((game) => (
+            <option key={game.id} value={game.id}>
+              {game.game_type}
+            </option>
+          ))}
+        </select>
+        <InputLabels>How many games available?</InputLabels>
         <FormInput
-          type="text"
-          value={gameType}
-          placeholder="Game Type"
-          onChange={(e) => setGameType(e.target.value)}
+          type="number"
+          name="amount"
+          value={newBarForm.amount}
+          onChange={handleChange}
+          min="1"
+          max="10"
         />
 
         <SubmitBtn>Submit</SubmitBtn>
