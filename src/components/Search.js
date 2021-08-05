@@ -3,12 +3,15 @@ import styled from "styled-components";
 
 const Container = styled.div`
   color: white;
-  width: 100%;
+  width: 60%;
   height: 75px;
   padding-top: 25px;
   text-align: center;
-  // background-color: rgb(0, 149, 121);
+  background-color: rgb(71, 109, 158, 0.8);
   font-size: 24px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-left: 20%;
   z-index: 1;
 `;
 

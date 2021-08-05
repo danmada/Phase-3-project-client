@@ -1,43 +1,57 @@
 import { useState } from "react";
 import styled from "styled-components";
+import dartImg from "./assets/bar-darts.jpeg";
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-content: center;
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: fixed;
+  opacity: 0.6;
+  z-index: -1;
+`;
+
+const FormDiv = styled.div`
+  padding-left: 35%;
+  padding-right: 33%;
+  padding-top: 5%;
+  position: fixed;
 `;
 
 const BarForm = styled.form`
-  width: 500pt;
+  width: 350pt;
   display: grid;
-  align-content: center;
+  border: 2px solid #ccc;
   border-radius: 10px;
-  background-color: #f2f2f2;
+  background-color: rgb(71, 109, 158, 0.8);
   padding: 5px;
 `;
 
 const FormInput = styled.input`
-  width: 50%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 `;
 const SubmitBtn = styled.button`
-  width: 50%;
-  background-color: #4caf50;
+  width: 100%;
+  background-color: #476d9e;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  &:hover {
+    color: rgb(0, 149, 121);
+  }
 `;
 const InputLabels = styled.label`
-  font-size: 12pt;
-  padding: 12px 12px 12px 0;
+  font-size: 15pt;
+  padding: 12px 12px 12px 10px;
   display: inline-block;
 `;
 
@@ -88,71 +102,73 @@ const NewBarForm = ({ bars, setBars, gameType }) => {
   console.log(newBarForm);
 
   return (
-    <Container>
-      <BarForm onSubmit={handleSubmit}>
-        <h1>New Form Bar</h1>
-        <InputLabels>Name of Bar</InputLabels>
-        <FormInput
-          type="text"
-          name="name"
-          value={newBarForm.name}
-          placeholder="Bar Name"
-          onChange={handleChange}
-        />
+    <div>
+      <Image src={dartImg} alt="dart background" />
+      <FormDiv>
+        <BarForm onSubmit={handleSubmit}>
+          <h1>New Form Bar</h1>
+          <InputLabels>Name of Bar</InputLabels>
+          <FormInput
+            type="text"
+            name="name"
+            value={newBarForm.name}
+            placeholder="Bar Name"
+            onChange={handleChange}
+          />
 
-        <InputLabels>Description</InputLabels>
-        <FormInput
-          type="text"
-          name="description"
-          value={newBarForm.description}
-          placeholder="Description"
-          onChange={handleChange}
-        />
-        <InputLabels>Rating: 1 to 10</InputLabels>
-        <FormInput
-          type="number"
-          name="rating"
-          value={newBarForm.rating}
-          onChange={handleChange}
-          min="1"
-          max="10"
-        />
+          <InputLabels>Description</InputLabels>
+          <FormInput
+            type="text"
+            name="description"
+            value={newBarForm.description}
+            placeholder="Description"
+            onChange={handleChange}
+          />
+          <InputLabels>Rating: 1 to 10</InputLabels>
+          <FormInput
+            type="number"
+            name="rating"
+            value={newBarForm.rating}
+            onChange={handleChange}
+            min="1"
+            max="10"
+          />
 
-        <InputLabels>City</InputLabels>
-        <select onChange={handleChange} name="city">
-          <option value={null}>City</option>
+          <InputLabels>City</InputLabels>
+          <select onChange={handleChange} name="city">
+            <option value={null}>City</option>
 
-          {reducedCities(bars).map((bar) => {
-            return (
-              <option key={bar} value={bar}>
-                {bar}
+            {reducedCities(bars).map((bar) => {
+              return (
+                <option key={bar} value={bar}>
+                  {bar}
+                </option>
+              );
+            })}
+          </select>
+
+          <InputLabels>Type of Game</InputLabels>
+          <select onChange={handleChange} name="game">
+            <option value={null}>Game</option>
+            {gameType.map((game) => (
+              <option key={game.id} value={game.id}>
+                {game.game_type}
               </option>
-            );
-          })}
-        </select>
-
-        <InputLabels>Type of Game</InputLabels>
-        <select onChange={handleChange} name="game">
-          <option value={null}>Game</option>
-          {gameType.map((game) => (
-            <option key={game.id} value={game.id}>
-              {game.game_type}
-            </option>
-          ))}
-        </select>
-        <InputLabels>How many games available?</InputLabels>
-        <FormInput
-          type="number"
-          name="amount"
-          value={newBarForm.amount}
-          onChange={handleChange}
-          min="1"
-          max="10"
-        />
-
-        <SubmitBtn>Submit</SubmitBtn>
-      </BarForm>
-    </Container>
+            ))}
+          </select>
+          <InputLabels>How many games available?</InputLabels>
+          <FormInput
+            type="number"
+            name="amount"
+            value={newBarForm.amount}
+            onChange={handleChange}
+            min="1"
+            max="10"
+          />
+          <SubmitBtn>Submit</SubmitBtn>
+        </BarForm>
+      </FormDiv>
+    </div>
   );
 };
 
