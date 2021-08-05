@@ -14,8 +14,8 @@ const Image = styled.img`
 const FormDiv = styled.div`
   padding-left: 35%;
   padding-right: 33%;
-  padding-top: 5%;
-  position: fixed;
+  padding-top: 120pt;
+  // position: fixed;
 `;
 
 const BarForm = styled.form`
