@@ -7,15 +7,20 @@ const Image = styled.img`
   height: 100%;
   object-fit: cover;
   position: fixed;
+  top: 0;
   opacity: 0.6;
   z-index: -1;
+`;
+
+const Container = styled.div`
+  background-image: url(dartImg);
 `;
 
 const FormDiv = styled.div`
   padding-left: 35%;
   padding-right: 33%;
   padding-top: 5%;
-  position: fixed;
+  position: absolute;
 `;
 
 const BarForm = styled.form`
@@ -42,7 +47,7 @@ const SubmitBtn = styled.button`
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
-  border: none;
+  border: 2px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
   &:hover {
@@ -61,6 +66,8 @@ const NewBarForm = ({ bars, setBars, gameType }) => {
     description: "",
     rating: 10,
     city: "",
+    latitude: "",
+    longitude: "",
     game: "",
     amount: 1,
   });
@@ -102,7 +109,7 @@ const NewBarForm = ({ bars, setBars, gameType }) => {
   console.log(newBarForm);
 
   return (
-    <div>
+    <Container>
       <Image src={dartImg} alt="dart background" />
       <FormDiv>
         <BarForm onSubmit={handleSubmit}>
@@ -146,6 +153,32 @@ const NewBarForm = ({ bars, setBars, gameType }) => {
               );
             })}
           </select>
+          <InputLabels>Latitude and Longitude</InputLabels>
+          <FormInput
+            type="text"
+            name="latitude"
+            value={newBarForm.latitude}
+            placeholder="Latitude"
+            onChange={handleChange}
+          />
+          <FormInput
+            type="text"
+            name="longitude"
+            value={newBarForm.longitude}
+            placeholder="Longitude"
+            onChange={handleChange}
+          />
+          <label for="latitude">
+            Geocoding is expensive, please consult{" "}
+            <a
+              href="https://www.google.com/maps/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Google Maps
+            </a>
+            .
+          </label>
 
           <InputLabels>Type of Game</InputLabels>
           <select onChange={handleChange} name="game">
@@ -168,7 +201,7 @@ const NewBarForm = ({ bars, setBars, gameType }) => {
           <SubmitBtn>Submit</SubmitBtn>
         </BarForm>
       </FormDiv>
-    </div>
+    </Container>
   );
 };
 
