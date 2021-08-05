@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import NewBarForm from "./components/NewBarForm";
 import About from "./components/About";
 
+
 function App() {
   const [gameType, setGameType] = useState([]);
   const [bars, setBars] = useState([]);

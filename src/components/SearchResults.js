@@ -3,8 +3,10 @@ import styled from "styled-components";
 import BarCard from "./BarCard";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
+import arcadeImg from "./assets/arcade_games.jpg"
 
 const Container = styled.div`
+  padding-top: 19pt;
   width: 100%;
   height: 100vh;
   display: grid;
@@ -31,13 +33,22 @@ const ListItem = styled.div`
   font-size: 25px;
   width: 100%;
   height: 20%;
-  border: 1px solid;
-  border-radius: 5px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
   &:hover {
     color: rgb(0, 149, 121);
     box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   }
 `;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: fixed;
+  opacity: 0.3;
+  z-index: -1;
+`
 
 const SearchResults = ({ search }) => {
   const [active, setActive] = useState(search[0]);
@@ -60,6 +71,7 @@ const SearchResults = ({ search }) => {
 
   return (
     <div>
+      <Image src={arcadeImg}></Image>
       <Container>
         <List>
           <Title>Bars:</Title>

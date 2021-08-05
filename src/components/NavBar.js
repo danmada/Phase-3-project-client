@@ -15,6 +15,7 @@ const Nav = styled.div`
   grid-template-columns: 1fr 1fr;
   justify-content: flex-end;
   z-index: 100;
+  position: fixed;
 `;
 
 const Title = styled.h1`
