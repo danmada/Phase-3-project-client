@@ -19,7 +19,7 @@ const Container = styled.div`
 const FormDiv = styled.div`
   padding-left: 35%;
   padding-right: 33%;
-  padding-top: 5%;
+  padding-top: 120pt;
   position: absolute;
 `;
 

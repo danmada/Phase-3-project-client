@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   color: white;
-  width: 60%;
+  width: 500pt;
   height: 75px;
   padding-top: 25px;
   text-align: center;
@@ -11,9 +11,19 @@ const Container = styled.div`
   font-size: 24px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  margin-left: 20%;
+  margin-left: 30%;
   z-index: 1;
 `;
+
+const SearchBtn = styled.input`
+  margin-right: 10pt;
+  float: right;
+  margin-right: 35pt;
+`
+
+const homeLabel = styled.label`
+  
+`
 
 const Search = ({
   form,
@@ -58,7 +68,7 @@ const Search = ({
     <Container>
       {/* <h3>What's on tap for tonight?</h3> */}
       <form onSubmit={handleSubmit}>
-        <label for="gameTypes">I want to play </label>
+        <homeLabel for="gameTypes">I want to play </homeLabel>
         <select onChange={handleChange} name="gameTypes">
           <option value={null}>Game</option>
           {gameType.map((game) => (
@@ -67,7 +77,7 @@ const Search = ({
             </option>
           ))}
         </select>
-        <label for="city">in</label>
+        <homeLabel for="city">  in  </homeLabel>
         <select onChange={handleChange} name="city">
           <option value={null}>City</option>
 
@@ -79,7 +89,7 @@ const Search = ({
             );
           })}
         </select>
-        <input type="submit" value="Search" />
+        <SearchBtn type="submit" value="Search" />
       </form>
     </Container>
   );

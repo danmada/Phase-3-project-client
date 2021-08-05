@@ -3,7 +3,11 @@ import styled from "styled-components";
 // import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 const Card = styled.div`
+  background-color: rgb(71, 109, 158, 0.8);
   padding: 50px;
+  font-size: 15pt;
+  border: 2px solid #ccc;
+  border-radius: 4px;
 `;
 
 const BarCard = ({ bar }) => {
