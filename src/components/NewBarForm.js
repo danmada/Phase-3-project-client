@@ -61,26 +61,12 @@ const InputLabels = styled.label`
   display: inline-block;
 `;
 
+const Link = styled.a`
+  color: red;
+`;
+
 const NewBarForm = ({ bars, setBars, gameType }) => {
   const { register, errors, handleSubmit } = useForm();
-  // const [newBarForm, setNewBarForm] = useState({
-  //   name: "",
-  //   description: "",
-  //   rating: 10,
-  //   city: "",
-  //   latitude: "",
-  //   longitude: "",
-  //   game: "",
-  //   amount: 1,
-  // });
-
-  // const handleChange = (e) => {
-  //   setNewBarForm({
-  //     ...newBarForm,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-  console.log(register);
 
   const submission = (data) => {
     if (data.city === null || data.game === null || data.amount === null) {
@@ -137,6 +123,7 @@ const NewBarForm = ({ bars, setBars, gameType }) => {
             {...register("rating", { required: true })}
             min="1"
             max="10"
+            placeholder="10"
           />
 
           <InputLabels>City</InputLabels>
@@ -172,13 +159,13 @@ const NewBarForm = ({ bars, setBars, gameType }) => {
           />
           <label for="latitude">
             Geocoding is expensive, please consult{" "}
-            <a
+            <Link
               href="https://www.google.com/maps/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Google Maps
-            </a>
+            </Link>
             .
           </label>
 
@@ -197,6 +184,7 @@ const NewBarForm = ({ bars, setBars, gameType }) => {
             {...register("amount", { required: true })}
             min="1"
             max="10"
+            placeholder="1"
           />
           <SubmitBtn>Submit</SubmitBtn>
         </BarForm>
