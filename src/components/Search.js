@@ -3,15 +3,15 @@ import styled from "styled-components";
 
 const Container = styled.div`
   color: white;
-  width: 500pt;
+  width: 36.5%;
   height: 75px;
   padding-top: 25px;
   text-align: center;
-  background-color: rgb(71, 109, 158, 0.8);
+  background-color: rgb(71, 109, 158, 0.7);
   font-size: 24px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  margin-left: 25%;
+  margin-left: 31.5%;
   z-index: 1;
 `;
 
@@ -21,7 +21,6 @@ const SearchBtn = styled.input`
   margin-right: 35pt;
 `;
 
-const homeLabel = styled.label``;
 
 const Search = ({
   form,

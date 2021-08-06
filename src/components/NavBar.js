@@ -14,8 +14,9 @@ const Nav = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: flex-end;
-  /* z-index: 100; */
+  z-index: 1; 
   /* position: sticky; */
+  
 `;
 
 const Title = styled.h1`

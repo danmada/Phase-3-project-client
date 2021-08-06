@@ -19,17 +19,19 @@ const Container = styled.div`
 const FormDiv = styled.div`
   padding-left: 35%;
   padding-right: 33%;
-  padding-top: 10vh;
+  padding-top: 5vh;
   position: absolute;
 `;
 
 const BarForm = styled.form`
-  width: 350pt;
+  color: white;
+  width: 450pt;
   display: grid;
   border: 2px solid #ccc;
   border-radius: 10px;
   background-color: rgb(71, 109, 158, 0.8);
   padding: 5px;
+  margin-bottom: 10%;
 `;
 
 const FormInput = styled.input`

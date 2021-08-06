@@ -3,14 +3,18 @@ import styled from "styled-components";
 import BarCard from "./BarCard";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
-import arcadeImg from "./assets/arcade_games.jpg";
+// import arcadeImg from "./assets/arcade_games.jpg";
+import shuffleboard from "./assets/board_front.jpeg"
 
 const Container = styled.div`
-  padding-top: 19pt;
-  width: 100%;
+  margin-left: 5%;
+  // padding-top: 40pt;
+  width: 90%;
   height: 75vh;
   display: grid;
   grid-template-columns: 30% 40% 30%;
+  border: 2px solid #ccc;
+  border-radius: 10px;
 `;
 const Title = styled.div`
   font-size: 30px;
@@ -24,6 +28,8 @@ const List = styled.div`
   flex-direction: column;
   height: 75vh;
   overflow: auto;
+  background-color: rgb(240,248,255, 0.8);
+  border-radius: 10px;
 `;
 const ListItem = styled.div`
   align-content: center;
@@ -33,8 +39,8 @@ const ListItem = styled.div`
   font-size: 25px;
   width: 100%;
   height: 20%;
-  border: 2px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
   &:hover {
     color: rgb(0, 149, 121);
     box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
@@ -47,7 +53,7 @@ const Image = styled.img`
   object-fit: cover;
   position: fixed;
   top: 0;
-  opacity: 0.3;
+  opacity: 0.8;
   z-index: -1;
 `;
 
@@ -72,7 +78,7 @@ const SearchResults = ({ search }) => {
 
   return (
     <div>
-      <Image src={arcadeImg}></Image>
+      <Image src={shuffleboard}></Image>
       <Container>
         <List>
           <Title>Bars:</Title>
