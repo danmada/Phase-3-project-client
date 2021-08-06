@@ -1,4 +1,5 @@
-import { useState } from "react";
+// import { useState } from "react";
+import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import dartImg from "./assets/bar-darts.jpeg";
 
@@ -62,34 +63,24 @@ const InputLabels = styled.label`
   display: inline-block;
 `;
 
+const Link = styled.a`
+  color: red;
+`;
+
 const NewBarForm = ({ bars, setBars, gameType }) => {
-  const [newBarForm, setNewBarForm] = useState({
-    name: "",
-    description: "",
-    rating: 10,
-    city: "",
-    latitude: "",
-    longitude: "",
-    game: "",
-    amount: 1,
-  });
+  const { register, errors, handleSubmit } = useForm();
 
-  const handleChange = (e) => {
-    setNewBarForm({
-      ...newBarForm,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const submission = (data) => {
+    if (data.city === null || data.game === null || data.amount === null) {
+      alert("Please select a city and or game!");
+    }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("I was clicked");
     fetch("http://localhost:9292/bars", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newBarForm),
+      body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((json) => {
@@ -107,44 +98,38 @@ const NewBarForm = ({ bars, setBars, gameType }) => {
     let cities = bars.map((bar) => bar.city);
     return [...new Set(cities)];
   };
-
-  console.log(newBarForm);
+  console.log(errors);
 
   return (
     <Container>
       <Image src={dartImg} alt="dart background" />
       <FormDiv>
-        <BarForm onSubmit={handleSubmit}>
+        <BarForm onSubmit={handleSubmit(submission)}>
           <h1>New Form Bar</h1>
           <InputLabels>Name of Bar</InputLabels>
           <FormInput
             type="text"
-            name="name"
-            value={newBarForm.name}
+            {...register("name", { required: true, maxLength: 200 })}
             placeholder="Bar Name"
-            onChange={handleChange}
           />
 
           <InputLabels>Description</InputLabels>
           <FormInput
             type="text"
-            name="description"
-            value={newBarForm.description}
+            {...register("description", { required: true })}
             placeholder="Description"
-            onChange={handleChange}
           />
           <InputLabels>Rating: 1 to 10</InputLabels>
           <FormInput
             type="number"
-            name="rating"
-            value={newBarForm.rating}
-            onChange={handleChange}
+            {...register("rating", { required: true })}
             min="1"
             max="10"
+            placeholder="10"
           />
 
           <InputLabels>City</InputLabels>
-          <select onChange={handleChange} name="city">
+          <select {...register("city", { required: true })}>
             <option value={null}>City</option>
 
             {reducedCities(bars).map((bar) => {
@@ -158,32 +143,36 @@ const NewBarForm = ({ bars, setBars, gameType }) => {
           <InputLabels>Latitude and Longitude</InputLabels>
           <FormInput
             type="text"
-            name="latitude"
-            value={newBarForm.latitude}
+            {...register("latitude", {
+              required: true,
+              maxLength: 18,
+              minLength: 4,
+            })}
             placeholder="Latitude"
-            onChange={handleChange}
           />
           <FormInput
             type="text"
-            name="longitude"
-            value={newBarForm.longitude}
+            {...register("longitude", {
+              required: true,
+              maxLength: 18,
+              minLength: 4,
+            })}
             placeholder="Longitude"
-            onChange={handleChange}
           />
           <label for="latitude">
             Geocoding is expensive, please consult{" "}
-            <a
+            <Link
               href="https://www.google.com/maps/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Google Maps
-            </a>
+            </Link>
             .
           </label>
 
           <InputLabels>Type of Game</InputLabels>
-          <select onChange={handleChange} name="game">
+          <select {...register("game", { required: true })}>
             <option value={null}>Game</option>
             {gameType.map((game) => (
               <option key={game.id} value={game.id}>
@@ -194,11 +183,10 @@ const NewBarForm = ({ bars, setBars, gameType }) => {
           <InputLabels>How many games available?</InputLabels>
           <FormInput
             type="number"
-            name="amount"
-            value={newBarForm.amount}
-            onChange={handleChange}
+            {...register("amount", { required: true })}
             min="1"
             max="10"
+            placeholder="1"
           />
           <SubmitBtn>Submit</SubmitBtn>
         </BarForm>
