@@ -4,7 +4,7 @@ import BarCard from "./BarCard";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 // import arcadeImg from "./assets/arcade_games.jpg";
-import shuffleboard from "./assets/board_front.jpeg"
+import shuffleboard from "./assets/board_front.jpeg";
 
 const Container = styled.div`
   margin-left: 5%;
@@ -28,7 +28,7 @@ const List = styled.div`
   flex-direction: column;
   height: 75vh;
   overflow: auto;
-  background-color: rgb(240,248,255, 0.8);
+  background-color: rgb(240, 248, 255, 0.8);
   border-radius: 10px;
 `;
 const ListItem = styled.div`
@@ -57,7 +57,7 @@ const Image = styled.img`
   z-index: -1;
 `;
 
-const SearchResults = ({ search }) => {
+const SearchResults = ({ search, handleDelete }) => {
   const [active, setActive] = useState(search[0]);
   console.log(active);
 
@@ -94,7 +94,7 @@ const SearchResults = ({ search }) => {
             );
           })}
         </List>
-        <BarCard bar={active} />
+        <BarCard bar={active} handleDelete={handleDelete} />
 
         <MapContainer
           className="map-container"

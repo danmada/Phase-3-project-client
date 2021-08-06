@@ -16,7 +16,7 @@ const Image = styled.img`
 const Block = styled.div`
   height: 46vh;
 `;
-const Home = ({ bars, gameType }) => {
+const Home = ({ bars, gameType, handleDelete }) => {
   // const [gameType, setGameType] = useState([]);
   // const [bars, setBars] = useState([]);
   const [search, setSearch] = useState("");
@@ -26,7 +26,7 @@ const Home = ({ bars, gameType }) => {
     city: [],
   });
 
-   console.log(isSearched)
+  console.log(isSearched);
   // useEffect(() => {
   //   const fetchData = async () => {
   //     const gameTypeResult = await fetch(`http://localhost:9292/game_types`, {
@@ -53,19 +53,21 @@ const Home = ({ bars, gameType }) => {
           <Block />
         </div>
       )}
-    
-    <div>
-      <Search
-        search={search}
-        setSearch={setSearch}
-        form={form}
-        setForm={setForm}
-        bars={bars}
-        gameType={gameType}
-        setIsSearched={setIsSearched}
-      />
-    </div>
-      {isSearched ? <SearchResults search={search} /> : null}
+
+      <div>
+        <Search
+          search={search}
+          setSearch={setSearch}
+          form={form}
+          setForm={setForm}
+          bars={bars}
+          gameType={gameType}
+          setIsSearched={setIsSearched}
+        />
+      </div>
+      {isSearched ? (
+        <SearchResults search={search} handleDelete={handleDelete} />
+      ) : null}
     </div>
   );
 };

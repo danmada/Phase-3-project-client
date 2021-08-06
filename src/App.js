@@ -5,7 +5,6 @@ import Home from "./components/Home";
 import NewBarForm from "./components/NewBarForm";
 import About from "./components/About";
 
-
 function App() {
   const [gameType, setGameType] = useState([]);
   const [bars, setBars] = useState([]);
@@ -24,6 +23,19 @@ function App() {
       .then((res) => res.json())
       .then((json) => setBars(json));
   }, []);
+
+  const handleDelete = (id) => {
+    console.log(id);
+    const updatedBars = bars.filter((b) => b.id !== id);
+    setBars(updatedBars);
+
+    fetch(`http://localhost:9292/bars/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  };
   return (
     <div className="App">
       <NavBar />
@@ -38,7 +50,9 @@ function App() {
         <Route
           exact
           path="/"
-          component={() => <Home bars={bars} gameType={gameType} />}
+          component={() => (
+            <Home bars={bars} gameType={gameType} handleDelete={handleDelete} />
+          )}
         />
       </Switch>
     </div>
