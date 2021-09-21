@@ -2,7 +2,8 @@
 
 Welcome to Pub Game Finder! The yelp type app where a user can browse bars on a map and find ones with pub games they would like to play.
 
-Check out a demo of this project!
+Check out a demo of this project!(Click the image for a video walkthrough)
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/kx4etfuPt_A/0.jpg)](https://www.youtube.com/watch?v=kx4etfuPt_A)
 
 This project is in two repos. This is the front end and the backend is [here](https://github.com/Hank95/phase-3-project-server)
