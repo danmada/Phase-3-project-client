@@ -1,12 +1,12 @@
 # Pub Game Finder
 
-Welcome to Pub Game Finder! The yelp type app where a user can browse bars on a map and find ones with pub games they would like to play.
+Welcome to Pub Game Finder! A web app that allows users to search and locate businesses by pub game and city. 
 
-Check out a demo of this project!(Click the image for a video walkthrough)
+Please check out a demo of this project by clicking the link below!
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/kx4etfuPt_A/0.jpg)](https://www.youtube.com/watch?v=kx4etfuPt_A)
+[Pub Game Finder Demo](https://vimeo.com/618330717/9b2423ea1c)
 
-This project is in two repos. This is the front end and the backend is [here](https://github.com/Hank95/phase-3-project-server)
+This project is in two repos. This is the front end and the backend is [here](https://github.com/danmada/phase-3-project-server)
 
 ### Frontend Setup
 
@@ -19,7 +19,7 @@ npm start
 
 ### Backend Setup
 
-Fork and clone [this](https://github.com/Hank95/phase-3-project-server) repository to get started. Then, run
+Fork and clone [this](https://github.com/danmada/phase-3-project-server) repository to get started. Then, run
 `bundle install` to install the gems.
 
 You can start your server with:
